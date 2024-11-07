@@ -6,4 +6,10 @@ export const Header = styled.header`
   justify-content: space-between;
   padding: 1.5rem; // 24px (24/16 = 1.5)
   width: 100%;
+
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; // 8px
+  }
 `;
