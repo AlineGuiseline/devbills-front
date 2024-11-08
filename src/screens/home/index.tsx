@@ -1,6 +1,7 @@
 import { InputMask } from '@react-input/mask';
 
 import { Button } from '../../components/button';
+import { ButtonIcon } from '../../components/button-icon';
 import { Input } from '../../components/input';
 import { Logo } from '../../components/logo';
 import { Title } from '../../components/title';
@@ -27,7 +28,7 @@ export function Home() {
                 replacement={{ d: /\d/, m: /\d/, y: /\d/ }}
                 variant="dark"
                 label="Início"
-                placeholder="dd/mm/yyyy"
+                placeholder="dd/mm/aaaa"
               />
               <InputMask
                 component={Input}
@@ -35,10 +36,11 @@ export function Home() {
                 replacement={{ d: /\d/, m: /\d/, y: /\d/ }}
                 variant="dark"
                 label="Fim"
-                placeholder="dd/mm/yyyy"
+                placeholder="dd/mm/aaaa"
               />
               {/* É possível customizar o InputMask direto, mas é difícil, então
               ele nos permite criar um componente de Input personalizado e importar */}
+              <ButtonIcon />
             </InputGroup>
           </Filters>
         </Section>
