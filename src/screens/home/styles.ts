@@ -34,3 +34,11 @@ export const Filters = styled.div`
   justify-content: space-between;
   width: 100%;
 `;
+
+export const InputGroup = styled.div`
+  display: flex;
+  align-items: flex-end;
+  max-width: 22.5rem;
+  width: 100%;
+  gap: 0.5rem;
+`;
