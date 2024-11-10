@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, JSX } from 'react';
 
 import { Content, Overlay, Portal, Root, Trigger } from './styles';
 
