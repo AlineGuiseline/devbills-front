@@ -38,7 +38,7 @@ export const Content = styled(Dialog.Content)`
   width: 100%;
   max-width: 25rem;
   padding: 1rem;
-  animation:;
+  animation: contentShow 150ms;
 
   @keyframes contentShow {
     from {
