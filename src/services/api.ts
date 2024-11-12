@@ -15,6 +15,8 @@ export class APIService {
       createCategoryData,
     );
 
+    console.log(data);
+
     return data;
   }
 
