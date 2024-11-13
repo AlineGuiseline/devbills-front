@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { X } from '@phosphor-icons/react';
 import { InputMask } from '@react-input/mask';
 import dayjs from 'dayjs';
 import { useCallback, useEffect, useState } from 'react';
@@ -23,6 +24,7 @@ import { TransactionsFilterData } from '../../validators/types';
 import {
   Aside,
   Balance,
+  CategoryBadge,
   ChartAction,
   ChartContainer,
   ChartContent,
@@ -154,9 +156,21 @@ export function Home() {
                 title="Gastos"
                 subtitle="Despesas por categoria no período"
               />
+              {selectedCategory && (
+                <CategoryBadge
+                  $color={selectedCategory.color}
+                  onClick={handleDeselectCategory}
+                >
+                  <X />
+                  {selectedCategory.title.toUpperCase()}
+                </CategoryBadge>
+              )}
             </header>
             <ChartContent>
-              <CategoriesPieChart onClick={handleSelectCategory} />
+              <CategoriesPieChart
+                expenses={dashboard.expenses}
+                onClick={handleSelectCategory}
+              />
             </ChartContent>
           </ChartContainer>
           <ChartContainer>
