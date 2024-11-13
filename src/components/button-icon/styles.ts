@@ -10,7 +10,7 @@ export const Container = styled.button`
   height: 2.25rem;
   border-radius: 0.25rem;
   background-color: ${theme.colors.primary};
-  border: none;
+  border: 0;
   padding: 0;
   transition: all 100ms;
 

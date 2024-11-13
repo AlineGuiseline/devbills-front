@@ -5,17 +5,17 @@ import { Expense } from '../../services/api-types';
 import { theme } from '../../styles/theme';
 import { formatCurrency } from '../../utils/format-currency';
 
+export type CategoryProps = {
+  id: string;
+  title: string;
+  color: string;
+};
+
 type ChartData = {
   id: string;
   label: string;
   externalId: string;
   value: number;
-  color: string;
-};
-
-export type CategoryProps = {
-  id: string;
-  title: string;
   color: string;
 };
 
@@ -43,8 +43,6 @@ export function CategoriesPieChart({
 
     return [];
   }, [expenses]);
-  /* hook que utilizamos para fazer variáveis calculadas (que só sejam calculadas
-    caso haja alguma renderização específica, por exemplo) */
 
   return (
     <ResponsivePie

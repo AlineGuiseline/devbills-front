@@ -20,7 +20,10 @@ import { Title } from '../../components/title';
 import { Transaction } from '../../components/transaction';
 import { useFetchAPI } from '../../hooks/useFetchAPI';
 import { transactionsFilterSchema } from '../../validators/schemas';
-import { TransactionsFilterData } from '../../validators/types';
+import {
+  FinancialEvolutionFilterData,
+  TransactionsFilterData,
+} from '../../validators/types';
 import {
   Aside,
   Balance,
@@ -48,15 +51,34 @@ export function Home() {
     resolver: zodResolver(transactionsFilterSchema),
   });
 
-  const { transactions, dashboard, fetchTransactions, fetchDashboard } =
-    useFetchAPI();
+  const financialEvolutionFilterForm = useForm<FinancialEvolutionFilterData>({
+    defaultValues: {
+      year: dayjs().get('year').toString(),
+    },
+  });
+
+  const {
+    transactions,
+    dashboard,
+    financialEvolution,
+    fetchFinancialEvolution,
+    fetchTransactions,
+    fetchDashboard,
+  } = useFetchAPI();
 
   useEffect(() => {
     const { beginDate, endDate } = transactionsFilterForm.getValues();
 
     fetchDashboard({ beginDate, endDate });
     fetchTransactions(transactionsFilterForm.getValues());
-  }, [fetchTransactions, transactionsFilterForm, fetchDashboard]);
+    fetchFinancialEvolution(financialEvolutionFilterForm.getValues());
+  }, [
+    fetchTransactions,
+    transactionsFilterForm,
+    fetchDashboard,
+    fetchFinancialEvolution,
+    financialEvolutionFilterForm,
+  ]);
 
   const [selectedCategory, setSelectedCategory] =
     useState<CategoryProps | null>(null);
@@ -88,10 +110,18 @@ export function Home() {
   const onSubmitDashboard = useCallback(
     async (data: TransactionsFilterData) => {
       const { beginDate, endDate } = data;
+
       await fetchDashboard({ beginDate, endDate });
       await fetchTransactions(data);
     },
     [fetchDashboard, fetchTransactions],
+  );
+
+  const onSubmitFinancialEvolution = useCallback(
+    async (data: FinancialEvolutionFilterData) => {
+      await fetchFinancialEvolution(data);
+    },
+    [fetchFinancialEvolution],
   );
 
   return (
@@ -130,8 +160,6 @@ export function Home() {
                 error={transactionsFilterForm.formState.errors.endDate?.message}
                 {...transactionsFilterForm.register('endDate')}
               />
-              {/* É possível customizar o InputMask direto, mas é difícil, então
-              ele nos permite criar um componente de Input personalizado e importar */}
               <ButtonIcon
                 onClick={transactionsFilterForm.handleSubmit(onSubmitDashboard)}
               />
@@ -188,16 +216,19 @@ export function Home() {
                   variant="black"
                   label="Ano"
                   placeholder="aaaa"
+                  {...financialEvolutionFilterForm.register('year')}
                 />
                 <ButtonIcon
-                  onClick={transactionsFilterForm.handleSubmit(
-                    onSubmitTransactions,
+                  onClick={financialEvolutionFilterForm.handleSubmit(
+                    onSubmitFinancialEvolution,
                   )}
                 />
               </ChartAction>
             </header>
             <ChartContent>
-              <FinancialEvolutionBarChart />
+              <FinancialEvolutionBarChart
+                financialEvolution={financialEvolution}
+              />
             </ChartContent>
           </ChartContainer>
         </Section>

@@ -90,10 +90,8 @@ export function CreateTransactionDialog() {
               label="Nome"
               placeholder="Nome da transação..."
               {...register('title')}
+              error={errors.title?.message}
             />
-            {errors.title && (
-              <ErrorMessage>{errors.title.message}</ErrorMessage>
-            )}
             <InputGroup>
               <label>Valor</label>
               <CurrencyInput
@@ -106,6 +104,7 @@ export function CreateTransactionDialog() {
                 <ErrorMessage>{errors.amount.message}</ErrorMessage>
               )}
             </InputGroup>
+
             <InputMask
               component={Input}
               mask="dd/mm/aaaa"
@@ -143,8 +142,8 @@ export function CreateTransactionDialog() {
           </Content>
 
           <footer>
-            <Button variant="outline" type="button" onClick={handleClose}>
-              Cancelar
+            <Button onClick={handleClose} variant="outline" type="button">
+              Calcelar
             </Button>
             <Button type="submit">Cadastrar</Button>
           </footer>
