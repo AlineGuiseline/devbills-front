@@ -2,6 +2,8 @@
 
 Este repositório contém o front-end de uma aplicação construída com **React.js**, **TypeScript**, **Zod**, **nivo** e **Radix UI**.
 
+![DevBills front](/public/DevBills-front.png)
+
 ### 🛠️ Tecnologias Utilizadas
 
 - **React.js:** Biblioteca para criação de interfaces web.
