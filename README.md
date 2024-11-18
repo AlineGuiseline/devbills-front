@@ -1,4 +1,4 @@
-# DevBills API
+# DevBills Front
 
 Este repositório contém o front-end de uma aplicação construída com **React.js**, **TypeScript**, **Zod**, **nivo** e **Radix UI**.
 
