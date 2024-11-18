@@ -1,50 +1,73 @@
-# React + TypeScript + Vite
+# DevBills API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositório contém o front-end de uma aplicação construída com **React.js**, **TypeScript**, **Zod**, **nivo** e **Radix UI**.
 
-Currently, two official plugins are available:
+### 🛠️ Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React.js:** Biblioteca para criação de interfaces web.
+- **TypeScript:** Suporte à tipagem estática para maior segurança e escalabilidade.
+- **Zod:** Biblioteca para validação de dados.
+- **nivo:** Biblioteca para criação de gráficos dinâmicos.
+- **Radix UI:** Biblioteca de componentes.
 
-## Expanding the ESLint configuration
+### 🚀 Instalação e Execução
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+1. Clone o repositório
+```
+git clone https://github.com/AlineGuiseline/devbills-front.git
+cd devbills-front
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Instale as dependências
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
 ```
+npm install
+```
+
+3. Execute o projeto
+
+```
+npm run dev
+```
+
+Obs.: A API estará disponível em http://localhost:5173
+
+### ❗ Comunicado importante
+É crucial estar com o [servidor](https://github.com/AlineGuiseline/devbills-api) rodando antes de executar esta interface para que as informações salvas na API sejam visualizadas aqui.
+
+### 📦 **Estrutura do Projeto**
+
+```plaintext
+project-root/
+├── public/                # Contém o favicon
+├── src/
+   ├── components/         # Componentes visuais do projeto
+   ├── hooks/              # Lógica de conexão com a API
+      └──  index.tsx/
+      └──  useFetchAPI/
+   ├── screens/            # Telas do projeto
+      └── home/
+        └── index.tsx
+        └── styles.ts
+   ├── services/           # Tipagem das funções de conexão com a API
+        └── api-types.ts
+        └── api.ts
+   ├── styles/             # Estilo global e temas
+      └── global.ts
+      └── theme.ts
+   ├── utils/              # Funções utilitárias para a aplicação
+      └── format-currency.ts
+      └── format.date.ts
+   ├── validators/         # Lógica de validação do formulário
+      └── schemas.ts
+      └── types.ts
+├── .prettierrc            # Configuração do Prettier
+├── eslint.config          # Configuração do ESLint
+├── index.html             # Base do projeto
+└── tsconfig.json          # Configuração TypeScript
+```
+
+### 📌 Conclusão
+Esta interface fornece a visualização de um dashboard para controle financeiro, com inputs, modais e gráficos (de pizza e de barras).
+
+Se houver qualquer problema ou dúvida, fique à vontade para entrar em contato comigo, seja a partir de uma issue no repositório ou me contactando pelo [LinkedIn](https://www.linkedin.com/in/alineguiseline/)!

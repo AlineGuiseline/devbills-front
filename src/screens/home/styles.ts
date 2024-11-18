@@ -125,7 +125,7 @@ export const CategoryBadge = styled.span<CategoryBadgePros>`
   cursor: pointer;
 
   svg {
-    fill: ${theme.colors.error};
+    fill: ${(props) => props.$color};
     width: 0.875rem;
     height: 0.875rem;
   }

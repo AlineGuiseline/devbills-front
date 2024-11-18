@@ -53,6 +53,7 @@ export function CreateTransactionDialog() {
     async (data: CreateTransactionData) => {
       await createTransaction(data);
       handleClose();
+      window.location.reload();
     },
     [handleClose, createTransaction],
   );
@@ -143,7 +144,7 @@ export function CreateTransactionDialog() {
 
           <footer>
             <Button onClick={handleClose} variant="outline" type="button">
-              Calcelar
+              Cancelar
             </Button>
             <Button type="submit">Cadastrar</Button>
           </footer>

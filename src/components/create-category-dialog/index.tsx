@@ -65,7 +65,7 @@ export function CreateCategoryDialog() {
           </div>
           <footer>
             <Button onClick={handleClose} variant="outline" type="button">
-              Calcelar
+              Cancelar
             </Button>
             <Button type="submit">Cadastrar</Button>
           </footer>
